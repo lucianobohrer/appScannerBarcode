@@ -22,10 +22,6 @@
 
     <title>Onsen UI Sliding Menu</title>
 
-    <script>
-        angular.module('app', ['onsen']);
-    </script>
-
     <style>
         .page--menu-page__background {
             background-color: #333;
@@ -92,6 +88,10 @@
     <!-- Cordova reference -->
     <script src="cordova.js"></script>
     <script src="scripts/index.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/scanner-controller.js"></script>
+    <script src="scripts/services/scanner-services.js"></script>
+
     <!-- -->
     <!-- <button type="button" value="CLICK " onclick="scan()"/> -->
 
@@ -102,44 +102,19 @@
         </ons-toolbar>
         <div style="text-align: center">
           <br>
-          <ons-button icon="fa-twitter" modifier="normal" onclick="scan()">
-            <ons-icon icon="fa-camera" size="15px"></ons-icon> Ler código
-          </ons-button>
+          <div ng-controller="ScannerController">
+            <ons-button icon="fa-twitter" modifier="normal" ng-click="showAlert()">
+              <ons-icon icon="fa-camera" size="15px"></ons-icon> Ler código
+            </ons-button>
+          </div>
         </div>
       </ons-page>
     </ons-navigator>
 
-
-
     </ons-template>
     <script>
     function scan(){
-        cordova.plugins.barcodeScanner.scan(
-            function (result) {
-                if(!result.cancelled)
-                {
-                    if(result.format == "QR_CODE")
-                    {
-                        navigator.notification.prompt("Please enter name of data",  function(input){
-                            var name = input.input1;
-                            var value = result.text;
 
-                            var data = localStorage.getItem("LocalData");
-                            console.log(data);
-                            data = JSON.parse(data);
-                            data[data.length] = [name, value];
-
-                            localStorage.setItem("LocalData", JSON.stringify(data));
-
-                            alert("Done");
-                        });
-                    }
-                }
-            },
-            function (error) {
-                alert("Scanning failed: " + error);
-            }
-       );
       }
     </script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
