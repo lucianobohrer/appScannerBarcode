@@ -9,15 +9,15 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -26,26 +26,18 @@
         }
     },
     "installed_plugins": {
-        "phonegap-plugin-barcodescanner": {
-            "PACKAGE_NAME": "io.onsen.helloworld"
-        },
         "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "io.onsen.helloworld"
         },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "io.onsen.helloworld"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "io.onsen.helloworld"
         }
     },
     "dependent_plugins": {},
     "modules": [
-        {
-            "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
-            "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
-            "pluginId": "phonegap-plugin-barcodescanner",
-            "clobbers": [
-                "cordova.plugins.barcodeScanner"
-            ]
-        },
         {
             "file": "plugins/cordova-plugin-dialogs/www/notification.js",
             "id": "cordova-plugin-dialogs.notification",
@@ -61,6 +53,14 @@
             "clobbers": [
                 "cordova.InAppBrowser.open",
                 "window.open"
+            ]
+        },
+        {
+            "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+            "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+            "pluginId": "phonegap-plugin-barcodescanner",
+            "clobbers": [
+                "cordova.plugins.barcodeScanner"
             ]
         }
     ]

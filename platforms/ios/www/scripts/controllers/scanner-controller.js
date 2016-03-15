@@ -2,9 +2,10 @@
 
 var app = angular.module('app');
 
-  app.controller("ScannerController", function($scope, ScannerService){
-      $scope.showAlert = function(){
-        ScannerService.callScan();
+  app.controller("ScannerController", function($scope, ScannerService, testService){
+      $scope.showScanner = function(){
+        //ScannerService.callScan();
+        testService.scanCode();
       };
   });
 
